@@ -17,3 +17,6 @@ diagnosticMessages.generated.json
 # Misc
 .DS_Store
 *.log
+
+#venv
+venv/
