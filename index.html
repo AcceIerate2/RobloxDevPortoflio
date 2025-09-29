@@ -11,7 +11,6 @@
     <title>Accelerate`s Portfolio</title>
 </head>
 <body>
-    <script type="module" src="dist/main.js"></script>
     <!--<img class="fullBackgroundImage" src="content/images/Room.svg">-->
 
     <div id="homeContainer">
@@ -30,110 +29,58 @@
     <div id="codeContainer">
         <img id="codeCenterIcon" src="/content/essentials/icon.png">
         <div class="workHolder">
+            <template class="projectTemplate">
+                <div class="projectCard">
+                    <div class="projectMedia">
+                        <video class="projectMainMedia" id="mainVideo" autoplay muted loop playsinline>
+                            <source src="" type="video/mp4">
+                        </video>
 
-            <div class="projectTemplate">
-                <div class="projectMedia">
-                    <video class="projectMainMedia" autoplay muted loop playsinline>
-                        <source src="/content/videos/Video2.mp4" type="video/mp4">
-                    </video>
+                        <img class="projectMainMedia" id="mainImage" src="" style="display:none;">
 
-                    <div class="extraMedia">
-                        <img class="extraThumb" src="/content/images/Fallguys.png" alt="extra-1">
-                        <img class="extraThumb" src="/content/images/Fallguys.png" alt="extra-2">
-                        <img class="extraThumb" src="/content/images/Fallguys.png" alt="extra-3">
+                        <div class="extraMedia">
+                            <template class="extraThumbTemplate">
+                                <img class="extraThumb" src="" alt="extra-thumb">
+                            </template>
+                        </div>
                     </div>
-                </div>
 
-                <div class="projectInfo">
-                    <h3 class="projectName">Project Tycoon</h3>
-                    <p class="projectDesc">A realtime multiplayer tycoon experience built with performance and retention in mind. Implemented custom matchmaking and in-game economy.</p>
+                    <div class="projectInfo">
+                        <h3 class="projectName">Project Tycoon</h3>
+                        <p class="projectDesc">A realtime multiplayer tycoon experience built with performance and retention in mind. Implemented custom matchmaking and in-game economy.</p>
 
-                    <div class="projectContrib" aria-label="Contributions">
-                        <div class="contribRow">
-                            <span class="contribBadge contribType solo" title="Project created by just me">Solo</span>
-                            <div class="contribRoles" aria-hidden="false">
-                                <span class="contribBadge contributed">UI</span>
-                                <span class="contribBadge contributed">Code</span>
-                                <span class="contribBadge">3D</span>
-                                <span class="contribBadge">Lighting</span>
-                                <span class="contribBadge">Backend</span>
+                        <div class="projectContrib" aria-label="Contributions">
+                            <div class="contribRow">
+                                <div class="contribRoles" aria-hidden="false">
+                                    <template class="tagTemplate">
+                                        <span class="contribBadge"></span>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="projectMeta">
+                            <div class="projectDates">Jan 2024 — May 2024</div>
+                            <div class="projectLinks">
+                                <a class="linkBtn btn-github" href="https://github.com/yourrepo" target="_blank" aria-label="GitHub repository"><i class="fa-brands fa-github"></i><span>GitHub</span></a>
+                                <a class="linkBtn btn-roblox" href="https://www.roblox.com" target="_blank" aria-label="Roblox page"><i class="fa-solid fa-gamepad"></i><span>Roblox</span></a>
+                                <button class="playProject playLarge" data-btnType="openNewTab" data-url="https://www.roblox.com" aria-label="Play project"><i class="fa-solid fa-play"></i><span>Play</span></button>
+                            </div>
+                        </div>
+
+                        <div class="projectStats">
+                            <div class="stat"><strong class="statValue" id="visitsLabel">12.4k</strong><span class="statLabel">visits</span></div>
+                            <div class="stat stat-live" aria-live="polite" aria-atomic="true">
+                                <div class="statNumberRow">
+                                    <strong class="statValue" id="ccuLabel">142</strong>
+                                    <span class="liveDot" aria-hidden="true"></span>
+                                </div>
+                                <span class="statLabel">ccus</span>
                             </div>
                         </div>
                     </div>
-
-                    <div class="projectMeta">
-                        <div class="projectDates">Jan 2024 — May 2024</div>
-                        <div class="projectLinks">
-                            <a class="linkBtn btn-github" href="https://github.com/yourrepo" target="_blank" aria-label="GitHub repository"><i class="fa-brands fa-github"></i><span>GitHub</span></a>
-                            <a class="linkBtn btn-roblox" href="https://www.roblox.com" target="_blank" aria-label="Roblox page"><i class="fa-solid fa-gamepad"></i><span>Roblox</span></a>
-                            <button class="playProject playLarge" data-url="https://www.roblox.com" aria-label="Play project"><i class="fa-solid fa-play"></i><span>Play</span></button>
-                        </div>
-                    </div>
-
-                    <div class="projectStats">
-                        <div class="stat"><strong class="statValue">12.4k</strong><span class="statLabel">visits</span></div>
-                        <div class="stat stat-live" aria-live="polite" aria-atomic="true">
-                            <div class="statNumberRow">
-                                <strong class="statValue">142</strong>
-                                <span class="liveDot" aria-hidden="true"></span>
-                            </div>
-                            <span class="statLabel">ccus</span>
-                        </div>
-                    </div>
                 </div>
-            </div>
-
-            <div class="projectTemplate">
-                <div class="projectMedia">
-                    <video class="projectMainMedia" autoplay muted loop playsinline>
-                        <source src="/content/videos/Video2.mp4" type="video/mp4">
-                    </video>
-
-                    <div class="extraMedia">
-                        <img class="extraThumb" src="/content/images/Fallguys.png" alt="extra-1">
-                        <img class="extraThumb" src="/content/images/Fallguys.png" alt="extra-2">
-                        <img class="extraThumb" src="/content/images/Fallguys.png" alt="extra-3">
-                    </div>
-                </div>
-
-                <div class="projectInfo">
-                    <h3 class="projectName">Project Tycoon</h3>
-                    <p class="projectDesc">A realtime multiplayer tycoon experience built with performance and retention in mind. Implemented custom matchmaking and in-game economy.</p>
-
-                    <div class="projectContrib" aria-label="Contributions">
-                        <div class="contribRow">
-                            <span class="contribBadge contribType solo" title="Project created by just me">Solo</span>
-                            <div class="contribRoles" aria-hidden="false">
-                                <span class="contribBadge contributed">UI</span>
-                                <span class="contribBadge contributed">Code</span>
-                                <span class="contribBadge">3D</span>
-                                <span class="contribBadge">Lighting</span>
-                                <span class="contribBadge">Backend</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="projectMeta">
-                        <div class="projectDates">Jan 2024 — May 2024</div>
-                        <div class="projectLinks">
-                            <a class="linkBtn btn-github" href="https://github.com/yourrepo" target="_blank" aria-label="GitHub repository"><i class="fa-brands fa-github"></i><span>GitHub</span></a>
-                            <a class="linkBtn btn-roblox" href="https://www.roblox.com" target="_blank" aria-label="Roblox page"><i class="fa-solid fa-gamepad"></i><span>Roblox</span></a>
-                            <button class="playProject playLarge" data-url="https://www.roblox.com" aria-label="Play project"><i class="fa-solid fa-play"></i><span>Play</span></button>
-                        </div>
-                    </div>
-
-                    <div class="projectStats">
-                        <div class="stat"><strong class="statValue">12.4k</strong><span class="statLabel">visits</span></div>
-                        <div class="stat stat-live" aria-live="polite" aria-atomic="true">
-                            <div class="statNumberRow">
-                                <strong class="statValue">142</strong>
-                                <span class="liveDot" aria-hidden="true"></span>
-                            </div>
-                            <span class="statLabel">ccus</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </template>
         </div>
         <div id="skillsSection" aria-label="Skills and tools">
             <h4 class="skillsTitle">What I can do</h4>
@@ -179,3 +126,4 @@
     </div>
 </body>
 </html>
+<script type="module" src="dist/main.js"></script>

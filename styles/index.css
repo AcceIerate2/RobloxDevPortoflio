@@ -369,7 +369,7 @@ body {
 
 .workHolder { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.06) transparent; }
 
-.projectTemplate {
+.projectCard {
     width: 100%;
     max-width: 1100px;
     display: flex;
@@ -382,7 +382,7 @@ body {
     margin: 0.5rem 0; 
 }
 
-.projectTemplate::before {
+.projectCard::before {
     content: '';
     width: 6px;
     border-radius: 6px;
@@ -519,6 +519,10 @@ body {
     gap: 1rem;
     margin-top: auto;
     align-items: center; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 17.5%;
+    margin-top: 17.5%;
 }
 
 .stat {
@@ -593,7 +597,7 @@ body {
     border-radius: 999px;
     font-size: 0.85rem;
     line-height: 1;
-    text-transform: none;
+    text-transform: none;  
 }
 
 .contribBadge.contributed {
@@ -622,11 +626,11 @@ body {
 }
 
 @media only screen and (max-width: 900px) {
-    .projectTemplate {
+    .projectCard {
         flex-direction: column;
     }
     .projectMedia, .projectInfo { flex: unset; width: 100%; }
-    .projectTemplate::before { display:none; }
+    .projectCard::before { display:none; }
     .playLarge { width: 100%; justify-content: center; }
 }
 

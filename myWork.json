@@ -1,36 +1,25 @@
 {
-    "Code": {
-        "Maze Runner": {
-            "Description": "A game inspired by Subway Surfers + Temple Run but with Multiplier.",
-            "Screenshots":[
-                "",
-                ""
-            ],
-            "Video": "",
-            "Completed": false,
-            "Links": {
-                "Github": "Private",
-                "Roblox": ""
-            }
-        },
-
-        "Waterslide Simulator": {
-            "Description": "A Generic Simulator heavily focused on Sliding.",
-            "Screenshots": [
-                "",
-                ""
-            ],
-            "Video": "",
-            "Completed": true,
-            "Links": {
-                "Github": "Private",
-                "Roblox": ""
+    "codeContainer": {
+        "Reward Reminder Api": {
+            "Id": "5944552577",
+            "PlaceId": "17370712897",
+            "Description": "Shucks",
+            "Content": {
+                "Main": ["./content/Images/vsCode.png", "Image"],
+                "Extras": [
+                    "./content/Images/Fallguys.png", 
+                    "./content/Images/image_tycoon_image_for_portfolio.png", 
+                    "./content/Images/vsCode.png"
+                ]
             },
-            "Project Type": "Solo"
+            "Tags": ["Yee", "whatsuppppppppppppppppppppppppppppp"],
+            "Dates": {
+                "Start": "Jan 1994",
+                "End": "Aug 1650"   
+            },
+            "IsGame": true,
+            "GameLink": "https://www.roblox.com/games/17370712897/Waterslide-Simulator",
+            "Github": ""
         }
-    },
-
-    "3d": {
-
     }
 }
