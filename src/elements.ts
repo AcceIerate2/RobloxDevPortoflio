@@ -137,18 +137,63 @@ async function load_Project_Card(
         extraMediaDiv.appendChild(newExtraThumb)
     }
 
-    // apis/live counters
-    if (isGame == true) {
+    async function updateGameStats(visitsElement: HTMLParagraphElement, ccuElement: HTMLParagraphElement) {
+        if (visitsElement == null || ccuElement == null) {
+            console.log("VisitsElement or ccuElement does not exist... or might have been passed as a nil...")
+            return
+        }
+
         const roblox_CCU_Visits_Data = await request(universeId)
         var ccu = roblox_CCU_Visits_Data["ccu"]
         const visits = roblox_CCU_Visits_Data["visits"]
+        
+        visitsElement.textContent = (formatNumber(visits) ?? visitsElement.textContent)
+        ccuElement.textContent = (formatNumber(ccu) ?? ccuElement.textContent)
 
-        const visitsElement = projectCard.querySelector<HTMLParagraphElement>("#visitsLabel") as HTMLParagraphElement
-        visitsElement.textContent = formatNumber(visits)
-
-        const ccuElement = projectCard.querySelector<HTMLParagraphElement>("#ccuLabel") as HTMLParagraphElement
-        ccuElement.textContent = formatNumber(ccu)
+        console.log(`Updated stats for game: ${title}. UniverseId: ${universeId}.`)
     }
+
+    // apis/live counters
+    if (isGame == true) {
+        const visitsElement = projectCard.querySelector<HTMLParagraphElement>("#visitsLabel") as HTMLParagraphElement
+        const ccuElement = projectCard.querySelector<HTMLParagraphElement>("#ccuLabel") as HTMLParagraphElement
+        await updateGameStats(visitsElement, ccuElement)
+        
+        const baseDelay = 10000;
+
+        function getDelay() {
+            return baseDelay + (Math.random() * 4000 - 2000);
+        }
+
+        var isUpdating = false
+        const interval = setInterval(async function() {
+
+            if (visitsElement && ccuElement) {
+                
+                if (isUpdating == true) {
+                    return
+                }   
+
+                isUpdating = true
+                
+                try {
+                    await updateGameStats(visitsElement, ccuElement)
+                } catch (errorMessage) {
+                    console.warn("Error updating stats:", errorMessage);
+                } finally {
+                    isUpdating = false
+                }
+
+            } else {
+
+                console.log(document.body.contains(projectCard), projectCard.contains(visitsElement), projectCard.contains(ccuElement))
+
+                console.log("clearing interval... projectCard or VisitsElement or ccuElement is nil")
+                clearInterval(interval)
+
+            }
+
+        }, getDelay() as number)}
 
     // finalizing 
     container.appendChild(projectCard)
