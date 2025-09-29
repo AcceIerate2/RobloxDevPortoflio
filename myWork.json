@@ -5,14 +5,14 @@
             "PlaceId": "17370712897",
             "Description": "Shucks",
             "Content": {
-                "Main": ["./content/Images/vsCode.png", "Image"],
+                "Main": ["./content/images/vsCode.png", "Image"],
                 "Extras": [
-                    "./content/Images/Fallguys.png", 
-                    "./content/Images/image_tycoon_image_for_portfolio.png", 
-                    "./content/Images/vsCode.png"
+                    "./content/images/Fallguys.png", 
+                    "./content/images/image_tycoon_image_for_portfolio.png", 
+                    "./content/images/vsCode.png"
                 ]
             },
-            "Tags": ["Yee", "whatsuppppppppppppppppppppppppppppp"],
+            "Tags": ["a", "b"],
             "Dates": {
                 "Start": "Jan 1994",
                 "End": "Aug 1650"   
