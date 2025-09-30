@@ -3,6 +3,27 @@
         "Reward Reminder Api": {
             "Id": "5944552577",
             "PlaceId": "17370712897",
+            "Description": "Built a web API for Live Ops that sends reminders outside the game — like daily reward alerts or follow-ups after 24h/7d if rewards go unclaimed.",
+            "Content": {
+                "Main": ["./content/images/vsCode.png", "Image"],
+                "Extras": [
+                    "./content/images/Fallguys.png", 
+                    "./content/images/image_tycoon_image_for_portfolio.png", 
+                    "./content/images/vsCode.png"
+                ]
+            },
+            "Tags": ["Solo", "LiveOps"],
+            "Dates": {
+                "Start": "Jan 1994",
+                "End": "Aug 1650"   
+            },
+            "IsGame": true,
+            "GameLink": "https://www.roblox.com/games/17370712897/Waterslide-Simulator",
+            "GithubLink": ""
+        },
+        "Reward Remainder Api": {
+            "Id": "5944552577",
+            "PlaceId": "17370712897",
             "Description": "Shucks",
             "Content": {
                 "Main": ["./content/images/vsCode.png", "Image"],
@@ -19,7 +40,7 @@
             },
             "IsGame": true,
             "GameLink": "https://www.roblox.com/games/17370712897/Waterslide-Simulator",
-            "Github": ""
+            "GithubLink": ""
         }
     }
 }

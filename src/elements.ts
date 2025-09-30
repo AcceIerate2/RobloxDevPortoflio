@@ -5,7 +5,9 @@ import formatNumber from "./utility/formatNumber.js"
 interface Buttons {
     playBtn: HTMLButtonElement,
     codingSection: HTMLButtonElement,
-    buildSection: HTMLButtonElement
+    buildSection: HTMLButtonElement,
+    codeCenterIcon: HTMLImageElement,
+    codeCenterIconBuilds: HTMLImageElement
 }
 
 interface Containers {
@@ -13,13 +15,15 @@ interface Containers {
 }
 
 interface Text {
-    menuSelectionHeader: HTMLParagraphElement
+    menuSelectionHeader: HTMLParagraphElement,
 }
 
 const _buttons: Buttons = {
     ["playBtn"] : document.getElementById("playBtn") as HTMLButtonElement,
     ["codingSection"] : document.getElementById("codingSection") as HTMLButtonElement,
     ["buildSection"] : document.getElementById("buildSection") as HTMLButtonElement,
+    ["codeCenterIcon"] : document.getElementById("codeCenterIcon") as HTMLImageElement,
+    ["codeCenterIconBuilds"] : document.getElementById("codeCenterIconBuilds") as HTMLImageElement
 }
 
 const _containers: Containers = {
@@ -27,8 +31,44 @@ const _containers: Containers = {
 }
 
 const _text: Text = {
-  ["menuSelectionHeader"]: document.getElementById("modeSelectionText") as HTMLParagraphElement  
+  ["menuSelectionHeader"]: document.getElementById("modeSelectionText") as HTMLParagraphElement,
 }
+
+const mediaOverlayElement = document.getElementById("workOverlayBackground") as HTMLDivElement as HTMLDivElement
+const mediaOverlayVideoElement = mediaOverlayElement.querySelector<HTMLVideoElement>("video") as HTMLVideoElement
+const mediaOverlayVideoSourceElement = mediaOverlayVideoElement?.querySelector<HTMLSourceElement>("source") as HTMLSourceElement
+const mediaOverlayImageElement = mediaOverlayElement.querySelector<HTMLImageElement>("img") as HTMLImageElement
+
+async function updateOverlayContent(type: string, fileLocation: string) {
+    if (typeof fileLocation != "string") {
+        console.log("filelocation is null or not of type [string]!")
+        return
+    }
+
+    if (type == "image") {
+        mediaOverlayVideoElement.style.display = "none"
+        mediaOverlayImageElement.style.display = "block"
+
+        if (typeof fileLocation == "string") {
+            mediaOverlayImageElement.src = fileLocation
+        } else {
+            console.log("fileLocation is null")
+        }
+    } else if (type == "video") {
+        mediaOverlayVideoElement.style.display = "block"
+        mediaOverlayImageElement.style.display = "none"
+
+        if (typeof fileLocation == "string") {
+            mediaOverlayVideoSourceElement.src = fileLocation
+        } else {
+            console.log("fileLocation is null")
+        }
+    }
+}   
+
+mediaOverlayElement.addEventListener("click", function() {
+    mediaOverlayElement.classList.toggle("show")
+})
 
 const template = document.querySelector<HTMLTemplateElement>(".projectTemplate")
 async function load_Project_Card(
@@ -82,7 +122,7 @@ async function load_Project_Card(
     const githubAnchor = projectCard.querySelector<HTMLAnchorElement>(".btn-github") as HTMLAnchorElement
     if (githubAnchor != null) {
         if (githubUrl == null) {
-            githubAnchor.style.visibility = "hidden";
+            githubAnchor.style.display = "none";
         } else {
             githubAnchor.href = githubUrl ?? "" 
         }
@@ -93,8 +133,8 @@ async function load_Project_Card(
     const playBtn = projectCard.querySelector<HTMLButtonElement>(".playLarge") as HTMLButtonElement
 
     if (gameUrl == null || isGame != true) {
-        robloxAnchor.style.visibility = "hidden";
-        playBtn.style.visibility = "hidden";
+        robloxAnchor.style.display = "none";
+        playBtn.style.display = "none";
     } else {
         robloxAnchor.href = gameUrl ?? ""
         playBtn.dataset.url = `roblox://experiences/start?placeId=${startPlaceId}`
@@ -126,7 +166,18 @@ async function load_Project_Card(
         } else {
             console.log("fileType is not 'video' or 'image'... contact @Accelerate2_ (aka me) on twitter or @acceierate on discord to fix it pls")
         }
+
+        mainVideoElement.addEventListener("click", function() {
+            updateOverlayContent("video", fileLocation)
+            mediaOverlayElement.classList.toggle("show")
+        })
+
+        mainImageElement.addEventListener("click", function() {
+            updateOverlayContent("image", fileLocation)
+            mediaOverlayElement.classList.toggle("show")
+        })
     }
+
     // extra
     const extraContent = content["Extras"]
     for (const [_index, fileLocation] of Object.entries(extraContent)) {
@@ -135,6 +186,11 @@ async function load_Project_Card(
         const newExtraThumbImgElement = newExtraThumb.querySelector<HTMLImageElement>(".extraThumb") as HTMLImageElement
         newExtraThumbImgElement.src = fileLocation
         extraMediaDiv.appendChild(newExtraThumb)
+
+        newExtraThumbImgElement.addEventListener("click", function() {
+            updateOverlayContent("image", fileLocation)
+            mediaOverlayElement.classList.toggle("show")
+        })
     }
 
     async function updateGameStats(visitsElement: HTMLParagraphElement, ccuElement: HTMLParagraphElement) {
@@ -159,7 +215,7 @@ async function load_Project_Card(
         const ccuElement = projectCard.querySelector<HTMLParagraphElement>("#ccuLabel") as HTMLParagraphElement
         await updateGameStats(visitsElement, ccuElement)
         
-        const baseDelay = 10000;
+        const baseDelay = 15000;
 
         function getDelay() {
             return baseDelay + (Math.random() * 4000 - 2000);
